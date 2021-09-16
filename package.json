@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng s -o",
     "build": "ng build",
-    "test": "ng test",
-    "test-coverage": "ng test --code-coverage",
-    "tbuild": "ng test --no-watch && ng build",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
+    "serve": "json-server db.json",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -21,29 +22,48 @@
     "@angular/platform-browser": "~12.2.6",
     "@angular/platform-browser-dynamic": "~12.2.6",
     "@angular/router": "~12.2.6",
+    "@briebug/jest-schematic": "^3.1.0",
     "rxjs": "~6.5.4",
     "sweetalert2": "^10.14.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-builders/jest": "12.1.2",
     "@angular-devkit/build-angular": "~12.2.6",
     "@angular/cli": "~12.2.6",
     "@angular/compiler-cli": "~12.2.6",
-    "@types/jasmine": "~3.6.0",
-    "@types/jasminewd2": "~2.0.3",
+    "@types/jest": "27.0.1",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
-    "jasmine-core": "~3.6.0",
-    "jasmine-spec-reporter": "~5.0.0",
-    "karma": "^6.3.4",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "^2.0.3",
-    "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.5.0",
+    "jest": "27.2.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.3.5"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "moduleNameMapper": {
+      "@app/(.*)$": "<rootDir>/src/app/$1",
+      "@env/(.*)": "<rootDir>/src/environments/$1"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupJest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/",
+      "<rootDir>/src/test.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$"
+      }
+    }
   }
 }

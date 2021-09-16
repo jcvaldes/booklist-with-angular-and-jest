@@ -18,3 +18,29 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Eliminar jasmine
 npm remove @types/jasmine @types/jasminewd2 jasmine-core jasmine-spec-reporter karma-jasmine karma-jasmine-html-reporter karma karma-chrome-launcher karma-coverage -S
+
+## Instalar Jest 
+
+https://github.com/briebug/jest-schematic
+
+```
+ng add @briebug/jest-schematic
+```
+
+## Levantar el servidor
+
+```
+ npm i -g json-server
+
+ $ json-server db.json
+ ```
+
+## en setup-jest.ts
+ 
+reemplazar
+
+import 'jest-preset-angular';
+
+por 
+
+import 'jest-preset-angular/setup-jest';

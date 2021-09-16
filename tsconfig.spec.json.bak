@@ -6,17 +6,10 @@
       "jest",
       "node",
     ],
+    // quita muchas advertencias para que sea lo menos molesto posible
     "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "paths": {
-      "@app/*": [
-          "app/*"
-      ],
-      "@env/*": [
-          "environments/*"
-      ]
-    }
+    // si no ponemos esto no funciona la injeccion de dependencias
+    "emitDecoratorMetadata"
   },
   "files": [
     "src/test.ts",
